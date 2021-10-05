@@ -6,15 +6,22 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "compile:sass": "node-sass styles/sass/main.scss styles/main.css -w"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "mongodb": "^4.1.2",
+    "net": "^1.0.2",
     "next": "11.1.2",
+    "next-auth": "^3.29.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "sass": "^1.42.1"
   },
   "devDependencies": {
     "eslint": "7.32.0",
-    "eslint-config-next": "11.1.2"
+    "eslint-config-next": "11.1.2",
+    "node-sass": "^6.0.1"
   }
 }

@@ -1,0 +1,11 @@
+@import "components/auth-form";
+@import "components/head-navigation";
+@import "components/change-password";
+
+.dummy {
+  font-size: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
