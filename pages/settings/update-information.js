@@ -1,5 +1,6 @@
-import { useRef } from "react";
-
+import { useRef, useState } from "react";
+import Notification from "../../components/ui/notification";
+import { notificationMessage } from "../../lib/helper";
 async function updateInformationHandler(updatedData) {
   const response = await fetch("/api/user-settings/update-information", {
     method: "PATCH",
@@ -13,41 +14,72 @@ async function updateInformationHandler(updatedData) {
 }
 
 function UpdateInformationForm() {
+  const [requestStatus, setRequestStatus] = useState();
+  // pending, success, error
+  const [requestError, setRequestError] = useState();
   const nameInputRef = useRef();
 
   async function submitHandler(e) {
     e.preventDefault();
+    setRequestStatus("pending");
     const newName = nameInputRef?.current?.value;
 
-    const result = await updateInformationHandler({
-      newName: newName,
-    });
-    console.log(result);
+    try {
+      await updateInformationHandler({
+        newName: newName,
+      });
+      setRequestStatus("success");
+    } catch (error) {
+      setRequestError(error.message);
+      setRequestStatus("error");
+    }
   }
+
+  let notification;
+  if (requestStatus === "pending") {
+    notification = notificationMessage(
+      "pending",
+      "Sending request",
+      "Request pending"
+    );
+  } else if (requestStatus === "success") {
+    notification = notificationMessage(
+      "success",
+      "Success!",
+      "Updated successfully!"
+    );
+  } else if (requestStatus === "error") {
+    notification = notificationMessage(
+      "error",
+      "There was an error",
+      requestError
+    );
+  }
+
   return (
-    <form className="dummy" onSubmit={submitHandler}>
-      <div>
-        <label htmlFor="new-name">Update Name</label>
-        <input
-          id="new-name"
-          type="text"
-          placeholder="Name"
-          ref={nameInputRef}
+    <section>
+      <form className="dummy" onSubmit={submitHandler}>
+        <div>
+          <label htmlFor="new-name">Update Name</label>
+          <input
+            id="new-name"
+            type="text"
+            placeholder="Name"
+            ref={nameInputRef}
+          />
+        </div>
+        <div>
+          <button>Save</button>
+        </div>
+      </form>
+      {notification && (
+        <Notification
+          status={notification.status}
+          title={notification.title}
+          message={notification.message}
         />
-      </div>
-      {/* <div>
-        <label htmlFor="new-email">Update Email</label>
-        <input
-          id="new-email"
-          type="email"
-          placeholder="Email"
-          ref={emailInputRef}
-        />
-      </div> */}
-      <div>
-        <button>Save</button>
-      </div>
-    </form>
+      )}
+    </section>
   );
 }
 

@@ -52,6 +52,33 @@
 .change-password {
   font-size: 5rem; }
 
+.notification {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  height: 10rem;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  background-color: #343036;
+  color: #dfdbe6; }
+  .notification h2 {
+    font-size: 2rem;
+    margin: 0; }
+  .notification p {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0; }
+
+.success {
+  background-color: #12bd4b;
+  color: --color-grey-800; }
+
+.error {
+  background-color: #a10c4a; }
+
 .dummy {
   font-size: 5rem;
   display: flex;

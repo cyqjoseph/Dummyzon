@@ -28,6 +28,7 @@ async function handler(req, res) {
   if (!user) {
     res.status(401).json({ message: "User not found" });
     client.close();
+    throw new Error("User not found");
     return;
   }
 
@@ -36,8 +37,9 @@ async function handler(req, res) {
   const passwordsAreEqual = await verifyPassword(oldPassword, currentPassword);
 
   if (!passwordsAreEqual) {
-    res.status(403).json({ message: "Invalid password, please try again" });
+    res.status(403).json({ message: "Invalid password, please try again!" });
     client.close();
+    throw new Error("Invalid password, please try again!");
     return;
   }
   // hashing new pwd

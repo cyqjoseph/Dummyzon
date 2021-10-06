@@ -1,5 +1,6 @@
 import { getSession } from "next-auth/client";
 import { connectToDatabase } from "../../../lib/db";
+
 async function handler(req, res) {
   if (req.method !== "PATCH") {
     return;
