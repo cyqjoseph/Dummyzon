@@ -1,0 +1,220 @@
+.profileContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5vh 0;
+  height: 100%;
+  & input {
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      box-shadow: 0 0 0 30px white inset !important;
+      -webkit-box-shadow: 0 0 0 30px white inset !important;
+    }
+  }
+}
+
+.profile {
+  font-family: "Quicksand", sans-serif;
+  font-size: 5rem;
+  border-radius: 6px;
+  background-color: white;
+  width: 50%;
+  height: 90%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+
+  & h1 {
+    text-align: center;
+    margin: 5rem 0;
+    color: black;
+    font-weight: 700;
+    font-size: 4rem;
+    &:last-of-type {
+      border-top: 1px solid black;
+      padding-top: 5rem;
+    }
+  }
+  &__name {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    & label {
+      font-size: 2.3rem;
+      color: black;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      margin-right: 1rem;
+    }
+
+    & input {
+      font: inherit;
+      background-color: white;
+      border-radius: 2px;
+      font-size: 2rem;
+      border: 1px solid black;
+      height: 4rem;
+      width: 40%;
+      opacity: 0.4;
+      text-align: center;
+      padding: 0.1rem;
+      outline: none;
+      &:focus {
+        background-color: white;
+      }
+      &:focus-within {
+        background-color: white;
+      }
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus,
+      &:-webkit-autofill:active {
+        box-shadow: 0 0 0 30px white inset !important;
+        -webkit-box-shadow: 0 0 0 30px white inset !important;
+      }
+    }
+  }
+  &__email {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &-name {
+      font-size: 3.5rem;
+      color: black;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+    &-text {
+      font-size: 3rem;
+      padding-bottom: 3rem;
+    }
+    &::after {
+      border-bottom: 0.4px solid black;
+      content: "";
+      width: 100%;
+    }
+  }
+  &__password {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center;
+    &-name {
+      font-size: 3.5rem;
+      color: black;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+    &-link {
+      border: 1px solid black;
+      font-size: 4rem;
+      font-weight: 400;
+      text-align: center;
+      padding: 0 2rem;
+      padding-bottom: 1rem;
+      width: 30%;
+    }
+    &::after {
+      padding-top: 4rem;
+      border-bottom: 0.4px solid black;
+      content: "";
+      width: 100%;
+    }
+  }
+
+  &__country {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center;
+    &-name {
+      font-size: 3.5rem;
+      color: black;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+    &-selector {
+      height: 5rem;
+      text-align: center;
+    }
+  }
+
+  &__telephone {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center;
+    &-name {
+      font-size: 3.5rem;
+      color: black;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+    &-number {
+      width: 30%;
+      height: 4rem;
+      text-align: center;
+    }
+  }
+  &__address {
+    font-size: 5rem;
+    padding: 2rem 0;
+    display: flex;
+
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 10rem;
+    & input {
+      height: 4rem;
+      text-align: center;
+    }
+    &-city {
+      display: flex;
+      flex-direction: column;
+      justify-content: baseline;
+      align-items: center;
+      &-text {
+        font-size: 3rem;
+        font-weight: bold;
+        padding-bottom: 2rem;
+      }
+    }
+    &-address {
+      display: flex;
+      flex-direction: column;
+      justify-content: baseline;
+      align-items: center;
+    }
+  }
+  &__submit {
+    background: white;
+    width: 70%;
+    height: 6rem;
+    border-radius: 3rem;
+    color: black;
+    cursor: pointer;
+    border: 1px solid black;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    transition: all 4s ease-out;
+    &:hover,
+    &:active {
+      background: linear-gradient(
+        80deg,
+        $color-blue-50 20%,
+        $color-purple-50 70%,
+        $color-purple-100 100%
+      );
+    }
+  }
+}

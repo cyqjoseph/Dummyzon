@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+.authContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh; }
+
 .auth {
   font-family: "Quicksand", sans-serif;
   font-size: 5rem;
@@ -75,12 +81,6 @@
         width: 5rem;
         margin: 2rem; }
 
-.authContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 90vh; }
-
 .header {
   width: 100%;
   height: 10vh;
@@ -133,6 +133,176 @@
 .change-password {
   font-size: 5rem; }
 
+.profileContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5vh 0;
+  height: 100%; }
+  .profileContainer input:-webkit-autofill, .profileContainer input:-webkit-autofill:hover, .profileContainer input:-webkit-autofill:focus, .profileContainer input:-webkit-autofill:active {
+    box-shadow: 0 0 0 30px white inset !important;
+    -webkit-box-shadow: 0 0 0 30px white inset !important; }
+
+.profile {
+  font-family: "Quicksand", sans-serif;
+  font-size: 5rem;
+  border-radius: 6px;
+  background-color: white;
+  width: 50%;
+  height: 90%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  text-align: center; }
+  .profile h1 {
+    text-align: center;
+    margin: 5rem 0;
+    color: black;
+    font-weight: 700;
+    font-size: 4rem; }
+    .profile h1:last-of-type {
+      border-top: 1px solid black;
+      padding-top: 5rem; }
+  .profile__name {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; }
+    .profile__name label {
+      font-size: 2.3rem;
+      color: black;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      margin-right: 1rem; }
+    .profile__name input {
+      font: inherit;
+      background-color: white;
+      border-radius: 2px;
+      font-size: 2rem;
+      border: 1px solid black;
+      height: 4rem;
+      width: 40%;
+      opacity: 0.4;
+      text-align: center;
+      padding: 0.1rem;
+      outline: none; }
+      .profile__name input:focus {
+        background-color: white; }
+      .profile__name input:focus-within {
+        background-color: white; }
+      .profile__name input:-webkit-autofill, .profile__name input:-webkit-autofill:hover, .profile__name input:-webkit-autofill:focus, .profile__name input:-webkit-autofill:active {
+        box-shadow: 0 0 0 30px white inset !important;
+        -webkit-box-shadow: 0 0 0 30px white inset !important; }
+  .profile__email {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .profile__email-name {
+      font-size: 3.5rem;
+      color: black;
+      font-weight: 700;
+      margin-bottom: 2rem; }
+    .profile__email-text {
+      font-size: 3rem;
+      padding-bottom: 3rem; }
+    .profile__email::after {
+      border-bottom: 0.4px solid black;
+      content: "";
+      width: 100%; }
+  .profile__password {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center; }
+    .profile__password-name {
+      font-size: 3.5rem;
+      color: black;
+      font-weight: 700;
+      margin-bottom: 2rem; }
+    .profile__password-link {
+      border: 1px solid black;
+      font-size: 4rem;
+      font-weight: 400;
+      text-align: center;
+      padding: 0 2rem;
+      padding-bottom: 1rem;
+      width: 30%; }
+    .profile__password::after {
+      padding-top: 4rem;
+      border-bottom: 0.4px solid black;
+      content: "";
+      width: 100%; }
+  .profile__country {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center; }
+    .profile__country-name {
+      font-size: 3.5rem;
+      color: black;
+      font-weight: 700;
+      margin-bottom: 2rem; }
+    .profile__country-selector {
+      height: 5rem;
+      text-align: center; }
+  .profile__telephone {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center; }
+    .profile__telephone-name {
+      font-size: 3.5rem;
+      color: black;
+      font-weight: 700;
+      margin-bottom: 2rem; }
+    .profile__telephone-number {
+      width: 30%;
+      height: 4rem;
+      text-align: center; }
+  .profile__address {
+    font-size: 5rem;
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 10rem; }
+    .profile__address input {
+      height: 4rem;
+      text-align: center; }
+    .profile__address-city {
+      display: flex;
+      flex-direction: column;
+      justify-content: baseline;
+      align-items: center; }
+      .profile__address-city-text {
+        font-size: 3rem;
+        font-weight: bold;
+        padding-bottom: 2rem; }
+    .profile__address-address {
+      display: flex;
+      flex-direction: column;
+      justify-content: baseline;
+      align-items: center; }
+  .profile__submit {
+    background: white;
+    width: 70%;
+    height: 6rem;
+    border-radius: 3rem;
+    color: black;
+    cursor: pointer;
+    border: 1px solid black;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    transition: all 4s ease-out; }
+    .profile__submit:hover, .profile__submit:active {
+      background: linear-gradient(80deg, #73c7ff 20%, #b83cff 70%, #fd0afd 100%); }
+
 .notification {
   display: flex;
   justify-content: space-around;
@@ -162,7 +332,7 @@
 
 .layout {
   background: linear-gradient(80deg, #73c7ff 20%, #b83cff 70%, #fd0afd 100%);
-  height: 90vh; }
+  height: 100%; }
 
 .dummy {
   font-size: 5rem;

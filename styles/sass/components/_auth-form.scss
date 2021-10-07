@@ -1,3 +1,10 @@
+.authContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
 .auth {
   font-family: "Quicksand", sans-serif;
   font-size: 5rem;
@@ -99,11 +106,4 @@
       }
     }
   }
-}
-
-.authContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 90vh;
 }

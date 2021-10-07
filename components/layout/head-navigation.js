@@ -4,8 +4,6 @@ import { getFirstName } from "../../lib/helper";
 
 function HeadNavigation() {
   const [session, loading] = useSession();
-  console.log(session, loading);
-
   function logOutHandler() {
     signOut({
       redirect: false,
