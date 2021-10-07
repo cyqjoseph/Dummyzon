@@ -44,7 +44,6 @@ async function handler(req, res) {
     password: hashedPassword,
   });
 
-  console.log(result);
   res.status(201).json({ message: "Account created!" });
   client.close();
 }

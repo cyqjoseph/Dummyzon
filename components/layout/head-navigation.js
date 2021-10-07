@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { useSession, signOut, getSession } from "next-auth/client";
+import { useSession, signOut } from "next-auth/client";
 import { getFirstName } from "../../lib/helper";
-import { useEffect } from "react";
+
 function HeadNavigation() {
   const [session, loading] = useSession();
   console.log(session, loading);

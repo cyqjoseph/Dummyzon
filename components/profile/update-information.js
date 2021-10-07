@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import Notification from "../../components/ui/notification";
+import Notification from "../ui/notification";
 import { notificationMessage } from "../../lib/helper";
 async function updateInformationHandler(updatedData) {
   const response = await fetch("/api/user-settings/update-information", {

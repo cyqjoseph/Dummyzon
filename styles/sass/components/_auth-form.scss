@@ -1,3 +1,109 @@
 .auth {
-  font-size: 10rem;
+  font-family: "Quicksand", sans-serif;
+  font-size: 5rem;
+  border-radius: 6px;
+  background-color: white;
+  width: 25%;
+  height: 80%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+
+  & h1 {
+    text-align: center;
+    margin: 4rem 0;
+    color: black;
+    font-weight: 700;
+    font-size: 4rem;
+  }
+
+  &__control {
+    margin-bottom: 3rem;
+
+    & label {
+      font-size: 2rem;
+      display: block;
+      color: black;
+      font-weight: 400;
+      margin-bottom: 0.8rem;
+    }
+
+    & input {
+      font: inherit;
+      background-color: white;
+      border-radius: 2px;
+      border: 0;
+      border-bottom: 1px solid black;
+      height: 5rem;
+      width: 70%;
+      text-align: center;
+      padding: 0.1rem;
+      outline: none;
+      &:focus {
+        background-color: white;
+      }
+      &:focus-within {
+        background-color: white;
+      }
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus,
+      &:-webkit-autofill:active {
+        box-shadow: 0 0 0 30px white inset !important;
+        -webkit-box-shadow: 0 0 0 30px white inset !important;
+      }
+    }
+  }
+  &__submit {
+    background: linear-gradient(
+      80deg,
+      $color-blue-50 20%,
+      $color-purple-50 70%,
+      $color-purple-100 100%
+    );
+    width: 70%;
+    height: 4rem;
+    border-radius: 3rem;
+    color: white;
+    cursor: pointer;
+    border: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  &__signinContainer {
+    display: flex;
+    flex-direction: column;
+    &-create {
+      margin: 2rem 0;
+      font-size: 1.6rem;
+    }
+    &-signin {
+      border: 0;
+      background-color: white;
+      cursor: pointer;
+      font-family: inherit;
+      margin: 2rem;
+      font-size: 3rem;
+      font-weight: 600;
+    }
+    &-icons {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      &-icon {
+        height: 5rem;
+        width: 5rem;
+        margin: 2rem;
+      }
+    }
+  }
+}
+
+.authContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
 }

@@ -7,7 +7,9 @@ class MyDocument extends Document {
         <Head />
         <body>
           <Main />
+
           <NextScript />
+          {/* <div id="header"></div> */}
           <div id="notification"></div>
         </body>
       </Html>
