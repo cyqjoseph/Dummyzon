@@ -18,12 +18,14 @@ function AuthForm() {
     if (!isLogin) {
       //creating account
       try {
-        const result = await createAccount(
-          enteredName,
-          enteredEmail,
-          enteredPassword
-        );
-        console.log(result);
+        await createAccount(enteredName, enteredEmail, enteredPassword);
+        await signIn("credentials", {
+          redirect: false,
+          email: enteredEmail,
+          password: enteredPassword,
+        });
+        setIsLogin((prevState) => !prevState);
+        router.replace("/browse");
       } catch (error) {
         console.log(error);
       }

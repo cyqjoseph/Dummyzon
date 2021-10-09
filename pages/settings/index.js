@@ -1,9 +1,12 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { useRef } from "react";
 import { getSession } from "next-auth/client";
 import Countries from "../../lib/countries";
+import Notification from "../../components/ui/notification";
+import Context from "../../store/context";
+import { notificationMessage } from "../../lib/helper";
 async function updateInformationHandler(updatedData) {
   const response = await fetch("/api/user-settings/settings", {
     method: "PATCH",
@@ -17,6 +20,9 @@ async function updateInformationHandler(updatedData) {
 }
 
 function Settings() {
+  const [requestStatus, setRequestStatus] = useState();
+  // pending, success, error
+  const [requestError, setRequestError] = useState();
   const [userEmail, setUserEmail] = useState();
   const firstNameInputRef = useRef();
   const lastNameInputRef = useRef();
@@ -25,15 +31,29 @@ function Settings() {
   const cityInputRef = useRef();
   const addressInputRef = useRef();
   const router = useRouter();
-  Promise.resolve(getSession()).then(function (result) {
-    setUserEmail(result.user.email);
-  });
-  // console.log(router);
+  const Ctx = useContext(Context);
+  console.log(Ctx);
+  useEffect(() => {
+    Promise.resolve(getSession()).then(function (result) {
+      setUserEmail(result.user.email);
+    });
+  }, []);
 
+  // console.log(router);
+  useEffect(() => {
+    if (requestStatus === "success" || requestStatus === "error") {
+      const timer = setTimeout(() => {
+        setRequestStatus(null);
+        setRequestError(null);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [requestStatus]);
   const path = router.pathname;
 
   async function submitHandler(e) {
     e.preventDefault();
+    setRequestStatus("pending");
     const enteredFirstName = firstNameInputRef?.current?.value;
     const enteredLastName = lastNameInputRef?.current?.value;
     const enteredCountry = countryInputRef?.current?.value;
@@ -50,9 +70,32 @@ function Settings() {
         city: enteredCity,
         address: enteredAddress,
       });
+      setRequestStatus("success");
+      Ctx.changeNameHandler(enteredFirstName.toString());
     } catch (error) {
-      console.log(error);
+      setRequestError(error.message);
+      setRequestStatus("error");
     }
+  }
+  let notification;
+  if (requestStatus === "pending") {
+    notification = notificationMessage(
+      "pending",
+      "Sending request",
+      "Request pending"
+    );
+  } else if (requestStatus === "success") {
+    notification = notificationMessage(
+      "success",
+      "Success!",
+      "Updated successfully!"
+    );
+  } else if (requestStatus === "error") {
+    notification = notificationMessage(
+      "error",
+      "There was an error",
+      requestError
+    );
   }
   return (
     <section className="profileContainer">
@@ -123,6 +166,15 @@ function Settings() {
           <button className="profile__submit">Save Changes</button>
         </div>
       </form>
+      <div className="profileContainer__notification">
+        {notification && (
+          <Notification
+            status={notification.status}
+            title={notification.title}
+            message={notification.message}
+          />
+        )}
+      </div>
     </section>
   );
 }

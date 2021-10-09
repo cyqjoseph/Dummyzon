@@ -17,7 +17,7 @@ async function handler(req, res) {
   const phone = req.body.phone;
   const city = req.body.city;
   const address = req.body.address;
-  const fullName = firstName + lastName;
+  const fullName = firstName + " " + lastName;
   const client = await connectToDatabase();
   const usersCollection = client.db().collection("users");
   const user = await usersCollection.findOne({ email: userEmail });

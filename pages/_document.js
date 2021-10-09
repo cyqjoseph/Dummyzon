@@ -10,7 +10,6 @@ class MyDocument extends Document {
 
           <NextScript />
           {/* <div id="header"></div> */}
-          <div id="notification"></div>
         </body>
       </Html>
     );

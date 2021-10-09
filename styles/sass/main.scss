@@ -8,8 +8,12 @@
 @import "components/notification";
 @import "layout/layout";
 
+@import "components/browse/all-items";
+@import "components/browse/browse-grid";
+@import "components/browse/browse-item";
+
 .dummy {
-  font-size: 5rem;
+  font-size: 10rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

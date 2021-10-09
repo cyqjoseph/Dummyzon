@@ -10,12 +10,11 @@ function Notification(props) {
     statusClasses = "error";
   }
   const cssClasses = `notification ${statusClasses}`;
-  return ReactDOM.createPortal(
+  return (
     <div className={cssClasses}>
       <h2>{title}</h2>
       <p>{message}</p>
-    </div>,
-    document.getElementById("notification")
+    </div>
   );
 }
 

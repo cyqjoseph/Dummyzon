@@ -1,9 +1,44 @@
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/client";
 import { getFirstName } from "../../lib/helper";
-
+import { useEffect, useState, useContext, useCallback } from "react";
+import Context from "../../store/context";
 function HeadNavigation() {
   const [session, loading] = useSession();
+  const [name, setName] = useState("Test");
+  const [isLoading, setIsLoading] = useState(true);
+  const Ctx = useContext(Context);
+
+  const getUser = useCallback(async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:3000/api/user-data/get-user",
+        {
+          method: "POST",
+          body: JSON.stringify(session.user.email.toString()),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+      setName(data.data.name);
+    } catch (error) {}
+  }, [session]);
+
+  useEffect(() => {
+    // check if name has changed after updating
+    if (!Ctx.name) {
+      getUser();
+      setIsLoading(false);
+    } else if (session) {
+      // else reload name
+      setName(Ctx.name);
+      setIsLoading(false);
+    }
+  }, [Ctx.name, getUser, session]);
+
   function logOutHandler() {
     signOut({
       redirect: false,
@@ -26,9 +61,9 @@ function HeadNavigation() {
               </button>
             </li>
           )}
-          {session && (
+          {!isLoading && session && (
             <li>
-              <span>Welcome back, {getFirstName(session.user.name)}</span>
+              <span>Welcome back, {getFirstName(name)}</span>
             </li>
           )}
           {session && (

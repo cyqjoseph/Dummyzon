@@ -142,6 +142,8 @@
   .profileContainer input:-webkit-autofill, .profileContainer input:-webkit-autofill:hover, .profileContainer input:-webkit-autofill:focus, .profileContainer input:-webkit-autofill:active {
     box-shadow: 0 0 0 30px white inset !important;
     -webkit-box-shadow: 0 0 0 30px white inset !important; }
+  .profileContainer__notification {
+    height: 5vh; }
 
 .profile {
   font-family: "Quicksand", sans-serif;
@@ -309,7 +311,7 @@
   align-items: center;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   position: fixed;
-  height: 10rem;
+  height: 10vh;
   bottom: 0;
   width: 100%;
   left: 0;
@@ -334,8 +336,25 @@
   background: linear-gradient(80deg, #73c7ff 20%, #b83cff 70%, #fd0afd 100%);
   height: 100%; }
 
+.allItems {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .allItems h1 {
+    font-size: 5rem; }
+
+.browseGrid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rem;
+  align-content: center; }
+
 .dummy {
-  font-size: 5rem;
+  font-size: 10rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

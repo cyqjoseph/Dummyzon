@@ -2,7 +2,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth from "next-auth";
 import { connectToDatabase } from "../../../lib/db";
 import { verifyPassword } from "../../../lib/helper";
-import { session } from "next-auth/client";
 export default NextAuth({
   session: {
     jwt: true,
