@@ -6,17 +6,15 @@ function BrowseItem(props) {
   const linkPath = `/browse/${slug}`;
   const imagePath = `/images/${image}`;
   return (
-    <li>
+    <li className="browseItem">
       <Link href={linkPath}>
         <a>
-          <div>
-            <Image src={imagePath} alt={title} width={200} height={200} />
+          <div className="browseitem__image">
+            <Image src={imagePath} alt={title} width={240} height={200} />
           </div>
-          <div>
+          <div className="browseItem__details">
             <h1>{title}</h1>
-            <h3>{description}</h3>
             <h4>{price}</h4>
-            <h5>{isSaved}</h5>
           </div>
         </a>
       </Link>

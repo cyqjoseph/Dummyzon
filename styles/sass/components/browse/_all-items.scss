@@ -1,9 +1,22 @@
-.allItems {
-  height: 100vh;
+.allItemsContainer {
+  height: 100%;
+  padding: 5vh 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  & h1 {
+  // background-color: white;
+}
+.allItems {
+  border-radius: 6px;
+  background-color: white;
+  width: 85%;
+  height: 95%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  &__header {
+    padding-top: 4rem;
+    padding-bottom: 5rem;
     font-size: 5rem;
   }
 }

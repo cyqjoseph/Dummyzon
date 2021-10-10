@@ -2,9 +2,11 @@ import BrowseGrid from "./browse-grid";
 
 function AllItems(props) {
   return (
-    <section className="allItems">
-      <h1>All items</h1>
-      <BrowseGrid items={props.items} />
+    <section className="allItemsContainer">
+      <div className="allItems">
+        <h1 className="allItems__header">Browse</h1>
+        <BrowseGrid items={props.items} />
+      </div>
     </section>
   );
 }

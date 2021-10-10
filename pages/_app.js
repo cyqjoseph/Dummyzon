@@ -4,7 +4,6 @@ import "../styles/main.css";
 import Layout from "../components/layout/layout";
 import { ContextProvider } from "../store/context";
 function MyApp({ Component, pageProps }) {
-  console.log(pageProps);
   return (
     <Provider session={pageProps.session}>
       <ContextProvider>
