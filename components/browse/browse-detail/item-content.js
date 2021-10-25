@@ -7,6 +7,9 @@ function ItemContent(props) {
   console.log(item);
   const imagePath = `/images/${image}`;
 
+  const addToCartHandler = function (e) {
+    console.log(item);
+  };
   return (
     <section className="itemDetail">
       <div>
@@ -21,7 +24,12 @@ function ItemContent(props) {
           </div>
         </div>
         <div className="itemDetail__button">
-          <button className="itemDetail__button-button">Add To Cart</button>
+          <button
+            className="itemDetail__button-button"
+            onClick={addToCartHandler}
+          >
+            Add To Cart
+          </button>
         </div>
       </div>
     </section>

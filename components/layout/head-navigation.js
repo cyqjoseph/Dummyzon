@@ -1,26 +1,26 @@
 import Link from "next/link";
+import { CartIcon } from "../../public/icons";
 import { useSession, signOut } from "next-auth/client";
 import { getFirstName } from "../../lib/helper";
 import { useEffect, useState, useContext, useCallback } from "react";
 import Context from "../../store/context";
+import CartModal from "./cart-modal";
 function HeadNavigation() {
   const [session, loading] = useSession();
-  const [name, setName] = useState("Test");
+  const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [cartModal, setCartModal] = useState(false);
   const Ctx = useContext(Context);
 
   const getUser = useCallback(async () => {
     try {
-      const response = await fetch(
-        "http://localhost:3000/api/user-data/get-user",
-        {
-          method: "POST",
-          body: JSON.stringify(session.user.email.toString()),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch("/api/user-data/get-user", {
+        method: "POST",
+        body: JSON.stringify(session.user.email.toString()),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       const data = await response.json();
       console.log(data);
       setName(data.data.name);
@@ -45,8 +45,12 @@ function HeadNavigation() {
     });
   }
 
+  function toggleCartHandler() {
+    setCartModal((prevState) => !prevState);
+  }
   return (
     <header className="header">
+      <CartModal onHide={toggleCartHandler} show={cartModal} />
       <Link href="/">
         <a className="header__logo">
           <div>Dummyzon</div>
@@ -61,9 +65,18 @@ function HeadNavigation() {
               </button>
             </li>
           )}
+
           {!isLoading && session && (
             <li>
-              <span>Welcome back, {getFirstName(name)}</span>
+              <span>Welcome back, {getFirstName(name) || ""}</span>
+            </li>
+          )}
+          {!isLoading && session && (
+            <li className="header__cart">
+              <button onClick={toggleCartHandler}>
+                Your Cart
+                <CartIcon />
+              </button>
             </li>
           )}
           {session && (

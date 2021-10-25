@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const Context = React.createContext({
   name: "",
+  cart: 0,
   changeNameHandler: () => {},
 });
 
@@ -10,9 +11,11 @@ export const ContextProvider = function (props) {
   const changeNameHandler = function (name) {
     setName(name);
   };
+  const [cart, setCart] = useState(0);
   const contextValue = {
-    name: name,
-    changeNameHandler: changeNameHandler,
+    name,
+    cart,
+    changeNameHandler,
   };
   return (
     <Context.Provider value={contextValue}>{props.children}</Context.Provider>
