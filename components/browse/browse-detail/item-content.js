@@ -1,7 +1,9 @@
 /* eslint-disable react/no-children-prop */
 import Image from "next/image";
 import { useState, useContext } from "react";
+import Context from "../../../store/context";
 function ItemContent(props) {
+  const Ctx = useContext(Context);
   const { item } = props;
   const { description, isSaved, price, title, slug, image } = item;
   console.log(item);
@@ -9,6 +11,8 @@ function ItemContent(props) {
 
   const addToCartHandler = function (e) {
     console.log(item);
+    Ctx.addCartItem(item);
+    console.log(Ctx.cartItems);
   };
   return (
     <section className="itemDetail">
