@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 const Context = React.createContext({
   name: "",
-  cart: 0,
+  cartPrice: 0,
+  cartItems: [], //will contain array of objects
   changeNameHandler: () => {},
 });
 
@@ -11,10 +12,12 @@ export const ContextProvider = function (props) {
   const changeNameHandler = function (name) {
     setName(name);
   };
-  const [cart, setCart] = useState(0);
+  const [cartPrice, setCartPrice] = useState(0);
+  const [cartItems, setCartItems] = useState([]);
   const contextValue = {
     name,
-    cart,
+    cartPrice,
+    cartItems,
     changeNameHandler,
   };
   return (
