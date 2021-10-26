@@ -10,9 +10,7 @@ function ItemContent(props) {
   const imagePath = `/images/${image}`;
 
   const addToCartHandler = function (e) {
-    console.log(item);
     Ctx.addCartItem(item);
-    console.log(Ctx.cartItems);
   };
   return (
     <section className="itemDetail">

@@ -17,10 +17,35 @@ export const ContextProvider = function (props) {
     setName(name);
   };
   const addCartItem = function (item) {
-    cartItems.push(item);
-    setCartItems(cartItems); // will update adding logic
+    const cartItemIndex = cartItems.findIndex((cartItem) =>
+      Object.values(cartItem).includes(item.title)
+    );
+    if (cartItemIndex !== -1) {
+      const newCartItem = {
+        ...cartItems[cartItemIndex],
+        count: ++cartItems[cartItemIndex].count,
+      };
+      console.log(newCartItem);
+      cartItems.splice(cartItemIndex, 1, newCartItem);
+    } else {
+      cartItems.push({ title: item.title, count: 1 });
+    }
+    setCartItems(cartItems);
   };
   const removeCartItem = function (item) {
+    const cartItemIndex = cartItems.findIndex((cartItem) =>
+      Object.values(cartItem).includes(item.title)
+    );
+    const cartItemToBeRemoved = cartItems[cartItemIndex];
+    if (cartItemToBeRemoved.count === 1) {
+      cartItems.splice(cartItemIndex, 1);
+    } else {
+      const newCartItem = {
+        ...cartItems[cartItemIndex],
+        count: --cartItems[cartItemIndex].count,
+      };
+      cartItems.splice(cartItemIndex, 1, newCartItem);
+    }
     setCartItems((prevState) => prevState.pop(item)); // will update removing logic
   };
   const contextValue = {
