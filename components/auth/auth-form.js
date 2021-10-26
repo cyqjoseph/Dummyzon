@@ -1,15 +1,17 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useRef, useState, useContext } from "react";
 import { createAccount } from "../../lib/helper";
 import { signIn } from "next-auth/client";
 import { useRouter } from "next/router";
 import { GoogleIcon, FacebookIcon, LinkedInIcon } from "../../lib/icons";
+import Context from "../../store/context";
+
 function AuthForm() {
   const [isLogin, setIsLogin] = useState(true);
   const nameInputRef = useRef();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const router = useRouter();
-
+  const Ctx = useContext(Context);
   const submitHandler = async function (e) {
     e.preventDefault();
     const enteredEmail = emailInputRef.current.value;
@@ -36,8 +38,12 @@ function AuthForm() {
           email: enteredEmail,
           password: enteredPassword,
         });
-        console.log(result);
 
+        // const response = await fetch("/api/user-data/get-cart");
+
+        // const data = response.json();
+        // console.log(data);
+        // Ctx.setCtxCartItems(data);
         if (result.error) {
           console.log("Wrong credentials entered");
         } else {

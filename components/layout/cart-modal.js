@@ -9,6 +9,22 @@ import Context from "../../store/context";
 import { useContext } from "react";
 const CartModal = function (props) {
   const Ctx = useContext(Context);
+
+  const sendCartData = async function (cartData) {
+    try {
+      const response = await fetch("/api/user-data/send-cart", {
+        method: "PATCH",
+        body: JSON.stringify(cartData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = response.json();
+      console.log(data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
     <Modal
       {...props}
@@ -57,7 +73,12 @@ const CartModal = function (props) {
         <Button variant="warning" onClick={props.onHide}>
           Continue Shopping
         </Button>
-        <Button variant="success">Continue to Payment</Button>
+        <Button
+          variant="success"
+          onClick={sendCartData.bind(null, Ctx.cartItems)}
+        >
+          Continue to Payment
+        </Button>
       </ModalFooter>
     </Modal>
   );

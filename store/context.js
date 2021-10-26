@@ -7,6 +7,7 @@ const Context = React.createContext({
   changeNameHandler: () => {},
   addCartItem: () => {},
   removeCartItem: () => {},
+  setCtxCartItems: () => {},
 });
 
 export const ContextProvider = function (props) {
@@ -15,6 +16,22 @@ export const ContextProvider = function (props) {
   const [cartItems, setCartItems] = useState([]);
   const changeNameHandler = function (name) {
     setName(name);
+  };
+  const setCtxCartItems = function (items) {
+    setCartItems(items);
+    console.log(cartItems);
+    let totalPrice;
+    for (const item of cartItems) {
+      totalPrice += parseFloat(+item.price.replace("$", "") * count);
+    }
+    // cartItems.forEach((item) => {
+
+    //   totalPrice += parseFloat(item.price.replace("$", "")) * count;
+    //   console.log(totalPrice);
+    //   return totalPrice;
+    // });
+    console.log(totalPrice);
+    setCartPrice(totalPrice);
   };
   const addCartItem = function (item) {
     setCartPrice(
@@ -62,6 +79,7 @@ export const ContextProvider = function (props) {
     changeNameHandler,
     addCartItem,
     removeCartItem,
+    setCtxCartItems,
   };
   return (
     <Context.Provider value={contextValue}>{props.children}</Context.Provider>

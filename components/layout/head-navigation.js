@@ -23,8 +23,10 @@ function HeadNavigation() {
       });
       const data = await response.json();
       console.log(data);
+      Ctx.setCtxCartItems(data.data.cartItems);
       setName(data.data.name);
     } catch (error) {}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session]);
 
   useEffect(() => {
@@ -35,6 +37,7 @@ function HeadNavigation() {
     } else if (session) {
       // else reload name
       setName(Ctx.name);
+
       setIsLoading(false);
     }
   }, [Ctx.name, getUser, session]);
