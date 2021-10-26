@@ -1,8 +1,12 @@
 .cart-modal {
-  font-size: 4rem;
-  text-align: center;
   &__title {
+    font-size: 5rem;
+    padding: 1rem 2rem;
+    text-align: center;
+  }
+  &__cost {
     font-size: 4rem;
+    padding: 1rem 2rem;
   }
   &__footer {
     display: -webkit-flex;
@@ -20,6 +24,36 @@
     justify-content: space-around;
     padding: 3rem 1rem;
     border-top: 1px solid #dee2e6;
+  }
+  &__body {
+    list-style: none;
+    font-size: 5rem;
+    display: flex;
+    flex-direction: column;
+    &-ul {
+      list-style: none;
+      padding: 1rem;
+    }
+    &-list {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem;
+      border: 1px solid #dee2e6;
+      &:not(:last-child) {
+        margin-bottom: 3rem;
+      }
+      &-title {
+        font-size: 2rem;
+      }
+      &-buttons {
+        font-size: 2rem;
+        color: black;
+        &:first-child {
+          padding-right: 2rem;
+        }
+      }
+    }
   }
   & button {
     font-size: 1.4rem;

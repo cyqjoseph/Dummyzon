@@ -5,7 +5,11 @@ import ModalHeader from "react-bootstrap/ModalHeader";
 import ModalBody from "react-bootstrap/ModalBody";
 import ModalFooter from "react-bootstrap/ModalFooter";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Context from "../../store/context";
+import { useContext } from "react";
 const CartModal = function (props) {
+  const Ctx = useContext(Context);
+  console.log(Ctx.cartItems);
   return (
     <Modal
       {...props}
@@ -15,19 +19,46 @@ const CartModal = function (props) {
       animation={true}
       dialogClassName="cart-modal"
     >
-      <Modal.Header>
-        <ModalTitle bsPrefix="cart-modal__title">Your Cart</ModalTitle>
-      </Modal.Header>
-      <Modal.Body>
-        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-        consectetur ac, vestibulum at eros.
-      </Modal.Body>
+      <ModalHeader>
+        <div className="cart-modal__title">Your Cart</div>
+        <div className="cart-modal__cost">Total cost: ${Ctx.cartPrice}</div>
+      </ModalHeader>
+      <ModalBody bsPrefix="cart-modal__body">
+        <div>
+          <ul className="cart-modal__body-ul">
+            {Ctx.cartItems?.map((cartItem) => (
+              <li key={cartItem.title} className="cart-modal__body-list">
+                <div className="cart-modal__body-list-title">
+                  {cartItem.title} x{cartItem.count}
+                </div>
+                <div>
+                  <span className="cart-modal__body-list-buttons">
+                    <Button
+                      variant="success"
+                      onClick={Ctx.addCartItem.bind(null, cartItem)}
+                    >
+                      +
+                    </Button>
+                  </span>
+                  <span className="cart-modal__body-list-buttons">
+                    <Button
+                      variant="danger"
+                      onClick={Ctx.removeCartItem.bind(null, cartItem)}
+                    >
+                      -
+                    </Button>
+                  </span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </ModalBody>
       <ModalFooter bsPrefix="cart-modal__footer">
-        <Button variant="success">Continue to Payment</Button>
-        <Button onClick={props.onHide} variant="danger">
+        <Button variant="warning" onClick={props.onHide}>
           Continue Shopping
         </Button>
+        <Button variant="success">Continue to Payment</Button>
       </ModalFooter>
     </Modal>
   );

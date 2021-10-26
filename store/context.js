@@ -17,6 +17,9 @@ export const ContextProvider = function (props) {
     setName(name);
   };
   const addCartItem = function (item) {
+    setCartPrice(
+      (prevPrice) => prevPrice + parseFloat(item.price.replace("$", ""))
+    );
     const cartItemIndex = cartItems.findIndex((cartItem) =>
       Object.values(cartItem).includes(item.title)
     );
@@ -28,11 +31,14 @@ export const ContextProvider = function (props) {
       console.log(newCartItem);
       cartItems.splice(cartItemIndex, 1, newCartItem);
     } else {
-      cartItems.push({ title: item.title, count: 1 });
+      cartItems.push({ title: item.title, count: 1, price: item.price });
     }
     setCartItems(cartItems);
   };
   const removeCartItem = function (item) {
+    setCartPrice(
+      (prevPrice) => prevPrice - parseFloat(item.price.replace("$", ""))
+    );
     const cartItemIndex = cartItems.findIndex((cartItem) =>
       Object.values(cartItem).includes(item.title)
     );
@@ -44,9 +50,10 @@ export const ContextProvider = function (props) {
         ...cartItems[cartItemIndex],
         count: --cartItems[cartItemIndex].count,
       };
+      console.log(newCartItem);
       cartItems.splice(cartItemIndex, 1, newCartItem);
     }
-    setCartItems((prevState) => prevState.pop(item)); // will update removing logic
+    setCartItems(cartItems);
   };
   const contextValue = {
     name,
