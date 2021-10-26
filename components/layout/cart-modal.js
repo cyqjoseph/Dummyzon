@@ -9,7 +9,6 @@ import Context from "../../store/context";
 import { useContext } from "react";
 const CartModal = function (props) {
   const Ctx = useContext(Context);
-  console.log(Ctx.cartItems);
   return (
     <Modal
       {...props}

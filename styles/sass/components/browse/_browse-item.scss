@@ -3,7 +3,10 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   padding: 3rem 2rem;
   text-align: center;
-
+  & a {
+    color: none;
+    text-decoration: none;
+  }
   &__image {
     width: 100%;
     padding-top: 5rem;
@@ -14,11 +17,11 @@
     }
   }
   &__details {
-    & h1 {
+    &-title {
       padding: 2rem 0;
       font-size: 3.4rem;
     }
-    & h4 {
+    &-price {
       font-size: 3rem;
       color: rgb(255, 112, 112);
     }

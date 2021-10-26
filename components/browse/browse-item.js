@@ -13,8 +13,8 @@ function BrowseItem(props) {
             <Image src={imagePath} alt={title} width={240} height={200} />
           </div>
           <div className="browseItem__details">
-            <h1>{title}</h1>
-            <h4>{price}</h4>
+            <div className="browseItem__details-title">{title}</div>
+            <div className="browseItem__details-price">{price}</div>
           </div>
         </a>
       </Link>

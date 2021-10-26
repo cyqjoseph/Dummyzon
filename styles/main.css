@@ -503,6 +503,10 @@
   padding: 3rem 2rem;
   text-align: center;
 }
+.browseItem a {
+  color: none;
+  text-decoration: none;
+}
 .browseItem__image {
   width: 100%;
   padding-top: 5rem;
@@ -512,11 +516,11 @@
 .browseItem__image img {
   object-fit: cover;
 }
-.browseItem__details h1 {
+.browseItem__details-title {
   padding: 2rem 0;
   font-size: 3.4rem;
 }
-.browseItem__details h4 {
+.browseItem__details-price {
   font-size: 3rem;
   color: #ff7070;
 }
