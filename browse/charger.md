@@ -2,7 +2,7 @@
 title: Charger
 description: No need to put effort into finding the sweet spot.
 price: $245.00
-image: cup.png
+image: charger.png
 isSaved: false
 ---
 
