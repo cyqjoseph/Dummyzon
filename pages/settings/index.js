@@ -39,7 +39,6 @@ function Settings() {
     });
   }, []);
 
-  // console.log(router);
   useEffect(() => {
     if (requestStatus === "success" || requestStatus === "error") {
       const timer = setTimeout(() => {
