@@ -19,14 +19,10 @@ export const ContextProvider = function (props) {
   };
   const setCtxCartItems = function (items) {
     setCartItems(items);
-    console.log(cartItems);
     let totalPrice = 0;
     for (const item of items) {
-      console.log(item);
       totalPrice += +item.price.replace("$", "") * +item.count;
     }
-
-    console.log(totalPrice);
     setCartPrice(totalPrice);
   };
   const addCartItem = function (item) {
@@ -41,7 +37,6 @@ export const ContextProvider = function (props) {
         ...cartItems[cartItemIndex],
         count: ++cartItems[cartItemIndex].count,
       };
-      console.log(newCartItem);
       cartItems.splice(cartItemIndex, 1, newCartItem);
     } else {
       cartItems.push({ title: item.title, count: 1, price: item.price });

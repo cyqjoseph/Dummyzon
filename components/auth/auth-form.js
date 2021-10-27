@@ -38,12 +38,6 @@ function AuthForm() {
           email: enteredEmail,
           password: enteredPassword,
         });
-
-        // const response = await fetch("/api/user-data/get-cart");
-
-        // const data = response.json();
-        // console.log(data);
-        // Ctx.setCtxCartItems(data);
         if (result.error) {
           console.log("Wrong credentials entered");
         } else {

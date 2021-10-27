@@ -108,6 +108,9 @@
   font-size: 10rem;
   border-bottom: 1px solid black;
 }
+.header a:hover {
+  color: white;
+}
 .header__logo {
   font-family: "Lato", sans-serif;
   color: white;
