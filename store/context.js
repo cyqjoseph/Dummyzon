@@ -20,16 +20,12 @@ export const ContextProvider = function (props) {
   const setCtxCartItems = function (items) {
     setCartItems(items);
     console.log(cartItems);
-    let totalPrice;
-    for (const item of cartItems) {
-      totalPrice += parseFloat(+item.price.replace("$", "") * count);
+    let totalPrice = 0;
+    for (const item of items) {
+      console.log(item);
+      totalPrice += +item.price.replace("$", "") * +item.count;
     }
-    // cartItems.forEach((item) => {
 
-    //   totalPrice += parseFloat(item.price.replace("$", "")) * count;
-    //   console.log(totalPrice);
-    //   return totalPrice;
-    // });
     console.log(totalPrice);
     setCartPrice(totalPrice);
   };
