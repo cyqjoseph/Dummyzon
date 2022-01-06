@@ -1,7 +1,13 @@
-import StartingPage from "../components/starting-page/starting-page";
-
+import AuthForm from "../components/auth/auth-form";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 function HomePage() {
-  return <StartingPage />;
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/auth");
+  }, [router]);
+  return <AuthForm />;
 }
 
 export default HomePage;
